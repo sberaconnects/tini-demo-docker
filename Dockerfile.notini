@@ -1,0 +1,8 @@
+FROM debian:bullseye
+
+RUN apt-get update && apt-get install -y bash gcc procps
+
+COPY zombie.c /zombie.c
+RUN gcc /zombie.c -o /zombie && rm /zombie.c
+
+CMD ["/zombie"]

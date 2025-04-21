@@ -1,0 +1,36 @@
+# .github/workflows/docker-tini-demo.yml
+name: Docker Tini Demo
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y dos2unix
+
+    - name: Ensure run_demo.sh has UNIX line endings and execute permission
+      run: |
+        dos2unix run_demo.sh
+        chmod +x run_demo.sh
+
+    - name: Run demo script
+      run: ./run_demo.sh
+
+    - name: Upload results.txt as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: results
+        path: results.txt

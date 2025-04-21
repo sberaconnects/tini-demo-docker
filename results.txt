@@ -1,0 +1,40 @@
+\n===== WITH TINI =====
+    PID    PPID STAT CMD
+      1       0 Ss   /usr/bin/tini -- /zombie
+      7       1 S    /zombie
+      8       7 Z    [zombie] <defunct>
+      9       7 Z    [zombie] <defunct>
+     10       7 Z    [zombie] <defunct>
+     11       7 Z    [zombie] <defunct>
+     12       7 Z    [zombie] <defunct>
+     13       7 Z    [zombie] <defunct>
+     14       7 Z    [zombie] <defunct>
+     15       7 Z    [zombie] <defunct>
+     16       7 Z    [zombie] <defunct>
+     17       7 Z    [zombie] <defunct>
+     18       0 Rs   ps -eo pid,ppid,stat,cmd
+\n===== WITHOUT TINI =====
+    PID    PPID STAT CMD
+      1       0 Ss   /zombie
+      7       1 Z    [zombie] <defunct>
+      8       1 Z    [zombie] <defunct>
+      9       1 Z    [zombie] <defunct>
+     10       1 Z    [zombie] <defunct>
+     11       1 Z    [zombie] <defunct>
+     12       1 Z    [zombie] <defunct>
+     13       1 Z    [zombie] <defunct>
+     14       1 Z    [zombie] <defunct>
+     15       1 Z    [zombie] <defunct>
+     16       1 Z    [zombie] <defunct>
+     17       0 Rs   ps -eo pid,ppid,stat,cmd
+\n===== ZOMBIES IN WITHOUT-TINI =====
+      7       1 Z    [zombie] <defunct>
+      8       1 Z    [zombie] <defunct>
+      9       1 Z    [zombie] <defunct>
+     10       1 Z    [zombie] <defunct>
+     11       1 Z    [zombie] <defunct>
+     12       1 Z    [zombie] <defunct>
+     13       1 Z    [zombie] <defunct>
+     14       1 Z    [zombie] <defunct>
+     15       1 Z    [zombie] <defunct>
+     16       1 Z    [zombie] <defunct>

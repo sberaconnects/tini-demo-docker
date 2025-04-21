@@ -1,0 +1,14 @@
+# docker-compose.yml
+version: '3.8'
+services:
+  with-tini:
+    build:
+      context: .
+      dockerfile: Dockerfile.tini
+    container_name: tini-container
+
+  without-tini:
+    build:
+      context: .
+      dockerfile: Dockerfile.notini
+    container_name: no-tini-container
