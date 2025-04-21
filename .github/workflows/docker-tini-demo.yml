@@ -29,9 +29,3 @@ jobs:
     - name: Run demo script
       run: ./run_demo.sh
 
-    - name: Upload results.txt as artifact
-      uses: actions/upload-artifact@v3.1.3
-      with:
-        name: results
-        path: results.txt
-
